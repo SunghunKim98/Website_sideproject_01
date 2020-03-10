@@ -5,9 +5,9 @@
 <% request.setCharacterEncoding("UTF-8"); %>
 
 <!-- 한명의 회원정보를 담는 user클래스를 자바 빈즈로 사용 / scope:페이지 현재의 페이지에서만 사용-->
-<jsp:useBean id="user" class="user.User" scope="page" />
-<jsp:setProperty name="user" property="userID" />
-<jsp:setProperty name="user" property="userPassword" /> 
+<jsp:useBean id="user" class="user.User" scope="page" /> <!-- id="빈 이름" class="자바빈 클래스명" scope="사용 범위 -->
+<jsp:setProperty name="user" property="*" /> <!-- name="빈 이름" property="속성명" value="설정할 속성 값" -->
+<!--login.jsp 의 form태그안에 input에서 넘어오는 parameter의 name이 property_속성명과 같다면, property 속성에 *로 표시해도 -->
 
 <!doctype html>
 <html lang="en">

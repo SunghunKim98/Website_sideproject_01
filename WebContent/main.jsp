@@ -47,6 +47,9 @@
       label{
         margin-bottom: 0.1rem;
       }
+      .container{
+        padding : 0px;
+      }
     </style>
     <!-- Custom styles for this template -->
     <link href="form-validation.css" rel="stylesheet">
@@ -105,8 +108,9 @@
         </div>
                
         <div class="mt-3">
-        	<p style="font-size:0.75rem;"> 
-        	<p style="font-size:0.75rem;">님 반갑습니다.
+        	
+        	<h1 style="font-size:0.80rem;"><%= userID_for_check %>님 <br>반갑습니다.</h1>
+        	 
         </div>
         <%
         	}
@@ -119,8 +123,8 @@
   <div class="nav-scroller py-1 mb-2">
     <div class="px-4 mx-5">
       <nav class="nav d-flex justify-content-between">
-        <a class="p-2 text-muted" href="#">World</a>
-        <a class="p-2 text-muted" href="#">U.S.</a>
+        <a class="p-2 text-muted" href="#">나도몰라</a>
+        <a class="p-2 text-muted" href="#">U.S</a>
         <a class="p-2 text-muted" href="#">게시판</a>
         <a class="p-2 text-muted" href="#">Design</a>
         <a class="p-2 text-muted" href="#">Culture</a>

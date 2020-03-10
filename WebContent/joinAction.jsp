@@ -23,12 +23,13 @@
   </head>
   <body>
 	<%
-	if((String)session.getAttribute("userID")!=null){
+	   if((String)session.getAttribute("userID")!=null){
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('이미 로그인이 되어있습니다.')");
 		script.println("location.href = 'main.jsp '");
 		script.println("</script>");
+	   }
 	
 		
 		if(user.getUserID()== null || user.getUserPassword()==null||user.getUserName()==null||user.getUserEmail()==null||user.getUserGender()==null)
@@ -43,7 +44,7 @@
 	    else{
 	    	
 	    	UserDAO userDAO = new UserDAO();
-		    int result = userDAO.join(user); //result라는 것은 5번의 입력중 입력 완료된 횟수
+		    int result = userDAO.join(user); 
 		    
 		    // result가 -1이라는 것은 데이터베이스 상의 오류를 의미한다
 		    // result가 -1이면 try catch문을 통해 걸러진다.
@@ -62,7 +63,7 @@
 				script.println("<script>");
 				script.println("location.href = 'main.jsp'");
 				script.println("</script>");
-		    }    	
+		    }
 	    }
 	
 	%>

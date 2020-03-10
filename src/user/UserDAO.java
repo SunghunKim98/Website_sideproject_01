@@ -21,8 +21,9 @@ public class UserDAO { // DAO란? 데이터베이스 접근 객체
 			String dbURL = "jdbc:mysql://localhost:3306/BBS?serverTimezone=UTC";
 			String dbID = "root";
 			String dbPassword = "12345678";
-			Class.forName("com.mysql.jdbc.Driver"); // mysql에 접속할수있도록 도와주는 매개체
-			conn = DriverManager.getConnection(dbURL,dbID,dbPassword);
+			Class.forName("com.mysql.jdbc.Driver"); // mysql에 접속할수있도록 도와주는 매개체 : Driver loading
+			conn = DriverManager.getConnection(dbURL,dbID,dbPassword);  //Basic Form -> getConnection(URL,userID,userPassword)
+																		// return Connection
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -34,10 +35,12 @@ public class UserDAO { // DAO란? 데이터베이스 접근 객체
 		String SQL = "SELECT userPassword From USER WHERE userID = ?";
 		
 		try {
-			pstmt = conn.prepareStatement(SQL); //쿼리 수행을 위한 preparestatement객체 생성;
+			pstmt = conn.prepareStatement(SQL); //쿼리 수행을 위한 preparestatement객체 pstmt생성;
 			pstmt.setString(1, user_ID);  // pstmt객체에 데이터 삽입;
 			rs = pstmt.executeQuery();  // 쿼리실행 및 rs객체에 수행된 쿼리의 결과(select문을 통해 나온 결과) 저장;
-			if(rs.next()) {
+			
+			if(rs.next()) { //rs.next() .next()에서 next row가 있으면 return true; 없으면 return false; 
+				
 				if(rs.getString(1).equals(user_Password))
 					return 1; // 로그인 성공!
 				else
@@ -66,7 +69,7 @@ public class UserDAO { // DAO란? 데이터베이스 접근 객체
 			pstmt.setString(5,user.getUserEmail());
 			return pstmt.executeUpdate();
 			
-			// 이때 return되는 값은 setString의 입력성공횟수
+			// 이때 return되는 값은 Database의 한 행 당 1씩 return;
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -74,13 +77,5 @@ public class UserDAO { // DAO란? 데이터베이스 접근 객체
 				
 		return -1;	//Database 오류 : 이미 존재하는 아이디가 있는 경우(Primary key로 ID를 적용했기 때문에)	
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 }
