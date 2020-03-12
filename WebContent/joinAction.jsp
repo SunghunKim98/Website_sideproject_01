@@ -23,7 +23,7 @@
   </head>
   <body>
 	<%
-	   if((String)session.getAttribute("userID")!=null){
+	   if((String)session.getAttribute("LOGIN")!=null){
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('이미 로그인이 되어있습니다.')");

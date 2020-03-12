@@ -50,6 +50,10 @@
       .container{
         padding : 0px;
       }
+      .container-selfmade{
+      	margin : 60px;
+      	margin-top :60px;
+      }
     </style>
     <!-- Custom styles for this template -->
     <link href="form-validation.css" rel="stylesheet">
@@ -59,9 +63,9 @@
   
   <body class="bg-light">
    <%
-   		String userID_for_check = null;
+   		String Login_check = null;
     	if(session.getAttribute("LOGIN")!=null){
-    		userID_for_check = (String) session.getAttribute("LOGIN");  		
+    		Login_check = (String) session.getAttribute("LOGIN");  		
     	}
    %>
     <div class="container">
@@ -80,7 +84,7 @@
         
         
         <%
-        	if(userID_for_check == null){
+        	if(Login_check == null){
         %>
         
         <div class="btn-group" role="group">
@@ -109,7 +113,7 @@
                
         <div class="mt-3">
         	
-        	<h1 style="font-size:0.80rem;"><%= userID_for_check %>님 <br>반갑습니다.</h1>
+        	<h1 style="font-size:0.80rem;"><%= Login_check %>님 <br>반갑습니다.</h1>
         	 
         </div>
         <%
@@ -125,12 +129,45 @@
       <nav class="nav d-flex justify-content-between">
         <a class="p-2 text-muted" href="#">나도몰라</a>
         <a class="p-2 text-muted" href="#">U.S</a>
-        <a class="p-2 text-muted" href="bbs.jsp">게시판</a>
+        <a class="p-2 text-muted" href="#">게시판</a>
         <a class="p-2 text-muted" href="#">Design</a>
         <a class="p-2 text-muted" href="#">Culture</a>
       </nav>
     </div>
   </div>
+  
+  <div class="container-selfmade">
+  	<div class="row">
+  		<table class="table" style="text-align: center; border: 1px solid #dddddd">
+  			<thead>
+  				<tr>
+  					<th style=" text-align:center;">번호</th>
+  					<th style="  text-align:center;">제목</th>
+  					<th style="  text-align:center;">작성자</th>
+  					<th style="  text-align:center;">작성일</th>
+  				</tr>
+  			</thead>
+  			<tbody>
+  				<tr>
+  					<td>1</td>
+  					<td>new</td>
+  					<td>june</td>
+  					<td>2020-03-11</td>
+  				</tr>
+  				<tr>
+  					<td>2</td>
+  					<td>sec</td>
+  					<td>june</td>
+  					<td>2020-03-11</td>
+  				</tr>
+  			</tbody>
+  		</table>
+  		 <div class="align-self-end ml-auto">
+   			 <a href="write.jsp" class="btn btn-primary">글쓰기</a>
+   		</div>
+  	</div>
+  </div>
+  
 
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

@@ -50,6 +50,10 @@
       .container{
         padding : 0px;
       }
+      .container-selfmade{
+      	margin : 60px;
+      	margin-top :60px;
+      }
     </style>
     <!-- Custom styles for this template -->
     <link href="form-validation.css" rel="stylesheet">
@@ -59,10 +63,19 @@
   
   <body class="bg-light">
    <%
-   		String userID_for_check = null;
-    	if(session.getAttribute("LOGIN")!=null){
-    		userID_for_check = (String) session.getAttribute("LOGIN");  		
+  		String Login_check = null;
+    		
+    	if((String)session.getAttribute("LOGIN")!=null){
+    		Login_check =  (String)session.getAttribute("LOGIN");
     	}
+	 	
+	 	if(Login_check == null){
+	 		PrintWriter script = response.getWriter();
+	 		script.println("<script>");
+	 		script.println("alert('로그인 후 사용해주세요.')");
+	 		script.println("location.href='login.jsp'");
+	 		script.println("</script>");
+	 	}
    %>
     <div class="container">
  <header class="blog-header py-3">
@@ -80,7 +93,7 @@
         
         
         <%
-        	if(userID_for_check == null){
+        	if(Login_check == null){
         %>
         
         <div class="btn-group" role="group">
@@ -109,7 +122,7 @@
                
         <div class="mt-3">
         	
-        	<h1 style="font-size:0.80rem;"><%= userID_for_check %>님 <br>반갑습니다.</h1>
+        	<h1 style="font-size:0.80rem;"><%= Login_check %>님 <br>반갑습니다.</h1>
         	 
         </div>
         <%
@@ -125,11 +138,34 @@
       <nav class="nav d-flex justify-content-between">
         <a class="p-2 text-muted" href="#">나도몰라</a>
         <a class="p-2 text-muted" href="#">U.S</a>
-        <a class="p-2 text-muted" href="bbs.jsp">게시판</a>
+        <a class="p-2 text-muted" href="#">게시판</a>
         <a class="p-2 text-muted" href="#">Design</a>
         <a class="p-2 text-muted" href="#">Culture</a>
       </nav>
     </div>
+  </div>
+  
+  <div class="container-selfmade">
+  		<form method="post" action="writeAction.jsp" class="row">
+  			<table class="table" style="text-align: center; border: 1px solid #dddddd">
+  			  <thead>
+  				<tr>
+  					<th colspan="2" style="background-color:#eeeeee; text-align:center;">게시판 글쓰기 양식</th>
+  				</tr>
+  			  </thead>
+  			  <tbody>
+  				<tr>
+  					<td><input type="text" class="form-control" placeholder="글 제목" name="bbsTitle" maxlength="50"></td>
+  				</tr>
+  				<tr>
+  					<td><textarea type="text" class="form-control" placeholder="글 내용" name="bbsContent" maxlength="2048" style="height :350px;"></textarea></td>
+  				</tr>
+  			  </tbody>
+  			</table>
+  			 <div class="align-self-end ml-auto">
+  			 	<input type="submit" class="btn btn-primary" value="글쓰기"> 
+  			</div>
+  		</form>
   </div>
 
 </div>
